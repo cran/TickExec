@@ -2,7 +2,7 @@
 
 LimitSell <- function (dir = dir, date, dfLog, limitPrice = NA, 
                        orderFrom, orderTo = 150000, orderLast = 7 * 3600,
-                       costOut = 0.001) {
+                       costOut = 0.001, market = 'SHSZ') {
   ## formalize argumaents ##
   orderFrom = as.numeric(orderFrom)
   orderTo   = as.numeric(orderTo)
@@ -11,13 +11,13 @@ LimitSell <- function (dir = dir, date, dfLog, limitPrice = NA,
   
   ## load whole day's data ##
   rawBidData <- LoadTickData(dir = dir, ticker = ticker, date = date, 
-                             CALL = 'BUY')
+                             CALL = 'BUY', market = market)
   if (class(rawBidData) == 'logical') {
     return (dfLog)
   } 
   
   rawTradeData <- LoadTickData(dir = dir, ticker = ticker, date = date, 
-                               CALL = 'TRADE')
+                               CALL = 'TRADE', market = market)
   if (class(rawTradeData) == 'logical') {
     return (dfLog)
   } 

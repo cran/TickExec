@@ -1,13 +1,13 @@
 
 
 MarketBuy <- function (dir = dir, date, ticker, capital, orderTime, 
-                       costIn = 0.001) {
+                       costIn = 0.001, market = 'SHSZ') {
   ## formalize argumaents ##
   orderTime <- as.numeric(orderTime)
   
   ## load whole day's data ##
   rawData <- LoadTickData(dir = dir, ticker = ticker, date = date, 
-                          CALL = 'SELL')
+                          CALL = 'SELL', market = market)
   if (class(rawData) == 'logical') {
     return (InitLogEntry(dateIn = date, ticker = ticker, capital = capital))
   } 

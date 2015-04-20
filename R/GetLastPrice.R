@@ -1,12 +1,12 @@
 
 
-GetLastPrice <- function(dir = dir, date, time, ticker) {
+GetLastPrice <- function(dir = dir, date, time, ticker, market = 'SHSZ') {
   ## formalize argumaents ##
   time <- as.numeric(time)
   
   ## load whole day's data ##
   rawData <- LoadTickData(dir = dir, ticker = ticker, date = date, 
-                          CALL = 'TRADE')
+                          CALL = 'TRADE', market = market)
   if (class(rawData) == 'logical') {
     return (NA)
   } 

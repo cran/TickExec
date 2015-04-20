@@ -1,6 +1,7 @@
 
 
-MarketSell <- function(dir = dir, date, orderTime, dfLog, costOut = 0.001) {
+MarketSell <- function(dir = dir, date, orderTime, dfLog, costOut = 0.001,
+                       market = 'SHSZ') {
   ## formalize argumaents ##
   orderTime <- as.numeric(orderTime)
   ticker = as.numeric(dfLog$TICKER)
@@ -10,7 +11,7 @@ MarketSell <- function(dir = dir, date, orderTime, dfLog, costOut = 0.001) {
   
   ## load whole day's data ##
   rawData <- LoadTickData(dir = dir, ticker = ticker, date = date, 
-                          CALL = 'BUY')
+                          CALL = 'BUY', market = market)
   if (class(rawData) == 'logical') {
     return (dfLog)
   } 

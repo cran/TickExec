@@ -30,7 +30,7 @@ InitLogEntry <- function(dateIn, ticker, capital, timeIn = NA, execVol = 0,
                     TIMEOUT     = NA,
                     AVGPRICEOUT = NA,
                     VOLUMEOUT   = 0,
-                    QUANTOUT    = NA,
+                    QUANTOUT    = 0,
                     DEPTHOUT    = NA,
                     SELLATTEMPT = 0,
                     VOLUMEHOLD  = execVol)

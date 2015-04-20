@@ -8,7 +8,8 @@ both 'orderTo' and 'orderLast' was given, then the smaller one will be adopted.
 }
 \usage{
 LimitBuy(dir = dir, date, ticker, capital, limitPrice = NA, orderFrom, 
-         orderTo = 150000, orderLast = 7 * 3600, costIn = 0.001)
+         orderTo = 150000, orderLast = 7 * 3600, costIn = 0.001,
+         market = 'SHSZ')
 }
 \arguments{
   \item{dir}{The directory containing the Tick data.}
@@ -21,6 +22,7 @@ LimitBuy(dir = dir, date, ticker, capital, limitPrice = NA, orderFrom,
   \item{orderTo}{time of the order being withdrawed.}
   \item{orderLast}{duration of the order, in seconds.}
   \item{costIn}{transaction cost for buying.}
+  \item{market}{specifying the sub-function to call depending on the market.}
 }
 \value{
 A dataframe, with corresponding summary statistics.
@@ -32,12 +34,12 @@ dir <- system.file("extdata", '', package = "TickExec")
 ## Execute order, given duration ##
 dfLog1 = LimitBuy(dir = dir, date = 20141013, ticker = 000001, capital = 1e6, 
                  limitPrice = NA, orderFrom = 94545, orderLast = 600, 
-                 costIn = 0.001)
+                 costIn = 0.001, market = 'SHSZ')
                  
 ## Execute order, given ending time ##
 dfLog2 = LimitBuy(dir = dir, date = 20141013, ticker = 000001, capital = 1e6, 
                  limitPrice = NA, orderFrom = 94545, orderTo = 100001, 
-                 costIn = 0.001)
+                 costIn = 0.001, market = 'SHSZ')
                   
 ## see result ##
 dfLog1

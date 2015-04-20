@@ -2,7 +2,7 @@
 #### current order in the queue. ####
 
 GetQueueLength <- function(dir = dir, date, orderTime, ticker, limitPrice, 
-                           CALL, position = 1) {
+                           CALL, position = 1, market = 'SHSZ') {
   ## formalize argument ##
   orderTime <- as.numeric(orderTime)
   if (CALL != 'BUY' & CALL != 'SELL') {
@@ -14,7 +14,7 @@ GetQueueLength <- function(dir = dir, date, orderTime, ticker, limitPrice,
   
   ## load whole day's data ##
   rawData <- LoadTickData(dir = dir, ticker = ticker, date = date, 
-                          CALL = CALL)
+                          CALL = CALL, market = market)
   if (class(rawData) == 'logical') {
     return (0)
   } 
